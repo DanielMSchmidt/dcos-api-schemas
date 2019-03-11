@@ -1,0 +1,7 @@
+//
+// Signature of an enum type
+//
+// @param <EnumTypeArguments> type - The enum type that needs to be instantiated
+//
+sig_enum(type) ::= "# TODO: implement enums"
+

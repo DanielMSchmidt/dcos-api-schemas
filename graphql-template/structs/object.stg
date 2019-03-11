@@ -1,0 +1,27 @@
+//
+// Signature of an object type
+//
+// @param <ObjectTypeArguments> type - The object type that needs to be instantiated
+//
+sig_object(type) ::= "<type.id>"
+
+
+//
+// Compose the declaration for the given interfae
+//
+// @param <ObjectTypeArguments> type - The object type that needs to be instantiated
+//
+declare_object(type) ::= <<
+type <type.id> {
+  <type.properties:{p|<declare_object__property_definition(p)>}; separator="\n">
+}
+
+>>
+
+// Compose a property of the interface
+//
+// @param <PropertyArguments> prop
+//
+declare_object__property_definition(prop) ::= <%
+    <prop.name>: <sig(prop.type,prop.type.defaultValue)><if(prop.required)>!<endif>
+%>

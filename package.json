@@ -1,0 +1,14 @@
+{
+  "name": "@dcos/graphql",
+  "version": "0.0.0",
+  "description": "Generate Graphql Types used by the DC/OS frontend",
+  "main": "index.ts",
+  "scripts": {
+    "build": "./generateTypes.js"
+  },
+  "author": "DanielMSchmidt<dschmidt@mesosphere.com>",
+  "license": "MIT",
+  "dependencies": {
+    "rimraf": "^2.6.3"
+  }
+}
