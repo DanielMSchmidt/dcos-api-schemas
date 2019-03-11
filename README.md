@@ -1,15 +1,15 @@
-# DC/OS Typescript Types
+# DC/OS API Schemas
 
 Goal of this project is to host typescript definitions for the types available in DC/OS.
 
 ## State
 
-- [ ] Automatic generation for manually loaded files
+- [ ] Automatic generation for manually loaded files to both Typescript and GraphQL
   - [x] Allow interfaces
   - [x] Allow key-value maps
   - [ ] Allows Unions
   - [ ] Allows Enums
-- [ ] Generate descriptions as JSDoc
+  - [ ] Descriptions as (JSDoc) Comments
 - [ ] Export user defined type guards for unions like GraphQL does
 - [ ] Export of files as npm package
 - [ ] Continious Delivery of this package
@@ -17,12 +17,20 @@ Goal of this project is to host typescript definitions for the types available i
 
 ## Usage
 
+### Typescript
+
 ```ts
-import { MarathonApp } from "@dcos/types";
+import { MarathonApp } from "@dcos/apis";
 
 function isAppHealthy(app: MarathonApp): boolean {
   return false;
 }
+```
+
+### GraphQL
+
+```js
+import schema from "@dcos/apis/outputs/graphql/schema.graphql";
 ```
 
 ## Development
