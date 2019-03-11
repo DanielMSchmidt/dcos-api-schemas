@@ -1,4 +1,5 @@
 node_modules/
-!.gitkeep
-output/
+outputs/
+!outputs/typescript/.gitkeep
+!outputs/graphql/.gitkeep
 index.ts

@@ -1,0 +1,6 @@
+//
+// Signature of a union type
+//
+// @param <UnionTypeArguments> type - The variadic union type that needs to be instantiated
+//
+sig_union(type) ::= "unknown // TODO: implement unions"

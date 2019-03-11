@@ -1,0 +1,37 @@
+// ===========================================
+//  Import fragments
+// ===========================================
+
+//
+// Each one of these fragments declares a shorthand function
+// that will expand to the type-specific equivalent. For
+// example, sig(type) will expand to sig_array(type) etc.
+//
+import "fragments/sig.stg"
+import "fragments/declare.stg"
+
+//
+// Each one of these fragments declare the type-specific
+// expansions of the shorthand tempaltes: sig(), inst(),
+// declare(), serialize(), deserialize() and validate()
+//
+import "structs/scalar.stg"
+import "structs/array.stg"
+import "structs/enum.stg"
+import "structs/object.stg"
+import "structs/union.stg"
+import "structs/variadic_object.stg"
+
+// ===========================================
+//  Entrypoint to the StringTemplate Compiler
+// ===========================================
+
+
+import "fragments/valueof.stg"
+
+contents(scope) ::= <<
+<declare(scope.defaultType)>
+
+// Private types
+<scope.allTypes:{type|<declare(type)>}>
+>>

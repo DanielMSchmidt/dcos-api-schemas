@@ -1,0 +1,6 @@
+//
+// Signature of a variadic object type
+//
+// @param <VariadicObjectTypeArguments> type - The variadic object type that needs to be instantiated
+//
+sig_variadic_object(type) ::= "object"

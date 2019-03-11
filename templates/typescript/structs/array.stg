@@ -1,0 +1,6 @@
+//
+// Signature of an array type
+//
+// @param <ArrayTypeArguments> type - The array type that needs to be instantiated
+//
+sig_array(type) ::= "<% <sig(type.itemType) %>[]"

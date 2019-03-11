@@ -1,0 +1,33 @@
+//
+// Scalar signature
+//
+// The scalar signature is just the scala type name of the storage type. Therefore
+// we are going to use the values of a look-up table, using the storage kind as key.
+//
+// @param <ScalarTypeArguments> type - The scalar type that needs to be instantiated
+//
+sig_scalar(type) ::= "<(SIGNATURE_SCALAR_MAP.(type.storage.kind))(type)>"
+
+// Lookup table to the signature function of scalar per storage type
+SIGNATURE_SCALAR_MAP ::= [
+    "string": "signature_scalar_string",
+    "binary": "signature_scalar_binary",
+    "integer": "signature_scalar_number",
+    "number": "signature_scalar_number",
+    "boolean": "signature_scalar_boolean",
+    "datetime": "signature_scalar_date",
+    "datetime_only": "signature_scalar_date",
+    "date_ony": "signature_scalar_date",
+    "time_only": "signature_scalar_date",
+    "void": "signature_scalar_void",
+    "any": "signature_scalar_any"
+]
+
+// Per storage-type scalar signature functions
+signature_scalar_binary(type) ::= "unknown"
+signature_scalar_string(type) ::= "string"
+signature_scalar_number(type) ::= "number"
+signature_scalar_boolean(type) ::= "boolean"
+signature_scalar_null(type) ::= "null"
+signature_scalar_void(type) ::= "null"
+signature_scalar_date(type) ::= "Date"
