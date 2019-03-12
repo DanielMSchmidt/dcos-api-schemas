@@ -31,7 +31,7 @@ import "fragments/valueof.stg"
 
 contents(scope) ::= <<
 <declare(scope.defaultType)>
-
+<declare_varadic_object()>
 # Generated graphql types
 <scope.allTypes:{type|<declare(type)>}; separator="\n">
 >>

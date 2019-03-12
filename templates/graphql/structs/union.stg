@@ -3,4 +3,12 @@
 //
 // @param <UnionTypeArguments> type - The variadic union type that needs to be instantiated
 //
-sig_union(type) ::= "unknown // TODO: implement unions"
+sig_union(type) ::= "<type.id>"
+
+
+declare_union(type) ::= <<
+union <type.id> = <type.unionTypes:{p|<declare_union__deserialize_type(p)>}; separator=" | ">
+>>
+
+
+declare_union__deserialize_type(type) ::= "<type.id>"

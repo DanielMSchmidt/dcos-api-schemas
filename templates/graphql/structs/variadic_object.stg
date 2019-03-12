@@ -3,4 +3,12 @@
 //
 // @param <VariadicObjectTypeArguments> type - The variadic object type that needs to be instantiated
 //
-sig_variadic_object(type) ::= "# TODO: implement variadic objects"
+sig_variadic_object(type) ::= "[VaradicObjectItem]"
+
+declare_varadic_object() ::= <<
+union Anything = String | Int | Float | Boolean | ID
+type VaradicObjectItem {
+    key: String
+    value: Anything
+}
+>>

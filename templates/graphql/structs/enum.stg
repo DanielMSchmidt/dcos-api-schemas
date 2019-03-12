@@ -3,5 +3,12 @@
 //
 // @param <EnumTypeArguments> type - The enum type that needs to be instantiated
 //
-sig_enum(type) ::= "# TODO: implement enums"
+sig_enum(type) ::= "<capitalize(type.id)>"
 
+declare_enum(type) ::= <<
+enum <capitalize(type.id)> {
+    <type.values:{v|<declare_enum__from_value(v)>}; separator="\n">
+}
+>>
+
+declare_enum__from_value(val) ::= "<val.value.codesafe>"
