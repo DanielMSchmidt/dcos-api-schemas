@@ -30,8 +30,8 @@ import "structs/variadic_object.stg"
 import "fragments/valueof.stg"
 
 contents(scope) ::= <<
+// Generated type definitions, please do not modify this file
 <declare(scope.defaultType)>
 
-// Private types
 <scope.allTypes:{type|<declare(type)>}>
 >>

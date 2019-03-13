@@ -30,8 +30,8 @@ import "structs/variadic_object.stg"
 import "fragments/valueof.stg"
 
 contents(scope) ::= <<
+# Generated graphql types, please do not modify this file
 <declare(scope.defaultType)>
 <declare_varadic_object()>
-# Generated graphql types
 <scope.allTypes:{type|<declare(type)>}; separator="\n">
 >>
