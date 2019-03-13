@@ -34,6 +34,7 @@ function runDTG(template) {
   console.info(`Done with DTG: '${String(output)}'`);
 }
 
+rimraf.sync("./outputs/{typescript,graphql}/*");
 runDTG("graphql");
 runDTG("typescript");
 
@@ -42,19 +43,22 @@ const files = getFilePaths();
 console.info(`Found ${files.length} files`);
 
 // Create wire up file that imports all generated files
-rimraf.sync("./outputs/typescript/index.ts");
 fs.writeFileSync(
   "./outputs/typescript/index.ts",
   `/** THIS FILE IS GENERATED, DO NOT EDIT IT DIRECTLY
 * THE SOURCE FOR THIS IS AT ./generateTypes.js
 **/
-${files.map(
-  file => `import * as ${getFileName(file)} from "./${removeSuffix(file)}";
+${files
+  .map(
+    file => `import * as ${getFileName(file)} from "./${removeSuffix(file)}";
 `
-)}
+  )
+  .join("")}
 
 export default {
-    ${files.map(file => `${getFileName(file)}: ${getFileName(file)}`)}
+    ${files
+      .map(file => `${getFileName(file)}: ${getFileName(file)}`)
+      .join(",\n")}
 }
 `
 );
