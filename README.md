@@ -18,13 +18,18 @@ Goal of this project is to host typescript definitions for the types available i
 
 ## Usage
 
+This is the vision of the usage
+
 ### Typescript
 
 ```ts
-import { MarathonApp } from "@dcos/apis";
+import { MarathonApp, isMarahonApp } from "@dcos/apis";
 
-function isAppHealthy(app: MarathonApp): boolean {
-  return false;
+function isAppHealthy(app: unknown): boolean {
+  if (isMarahonApp(app)) {
+    // TS knows now that app is a MarahonApp
+    return healthState;
+  }
 }
 ```
 
@@ -36,4 +41,4 @@ import schema from "@dcos/apis/outputs/graphql/schema.graphql";
 
 ## Development
 
-Run `npm run build`
+Run `npm run build` and `npm test`
