@@ -4,11 +4,19 @@
   "description": "Generate Graphql Types used by the DC/OS frontend",
   "main": "./outputs/typescript/index.ts",
   "scripts": {
-    "build": "./generateTypes.js"
+    "build": "./generateTypes.js",
+    "pretest": "npm run build",
+    "test:graphql": "graphql-schema-linter ./outputs/graphql/schema.graphql",
+    "test:ts": "tsc outputs/typescript/*.ts --noEmit",
+    "test": "npm run test:ts && npm run test:graphql"
   },
   "author": "DanielMSchmidt<dschmidt@mesosphere.com>",
   "license": "MIT",
   "dependencies": {
     "rimraf": "^2.6.3"
+  },
+  "devDependencies": {
+    "graphql-schema-linter": "^0.2.0",
+    "typescript": "^3.4.5"
   }
 }

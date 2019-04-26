@@ -1,0 +1,20 @@
+#%RAML 1.0 Library
+
+uses:
+  App: ./app.raml
+
+types:
+  ApiEvent:
+    type: ApiPostEvent
+    discrimiator: eventType
+
+  ApiPostEvent:
+    type: object
+    discriminatorProperty: eventType
+    discriminatorValue: api_post_event
+    properties:
+      clientIp: string
+      uri: string
+      appDefinition: App.AppDefinition
+      eventType: string
+      timestamp: string
