@@ -6,7 +6,9 @@
   "scripts": {
     "build": "./generateTypes.js",
     "pretest": "npm run build",
-    "test": "graphql-schema-linter ./outputs/graphql/schema.graphql"
+    "test:graphql": "graphql-schema-linter ./outputs/graphql/schema.graphql",
+    "test:ts": "tsc outputs/typescript/*.ts --noEmit",
+    "test": "npm run test:ts && npm run test:graphql"
   },
   "author": "DanielMSchmidt<dschmidt@mesosphere.com>",
   "license": "MIT",
@@ -14,6 +16,7 @@
     "rimraf": "^2.6.3"
   },
   "devDependencies": {
-    "graphql-schema-linter": "^0.2.0"
+    "graphql-schema-linter": "^0.2.0",
+    "typescript": "^3.4.5"
   }
 }
