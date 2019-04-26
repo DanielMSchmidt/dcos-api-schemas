@@ -2,6 +2,7 @@
 
 const { execSync: exec } = require("child_process");
 const rimraf = require("rimraf");
+const { Project } = require("ts-morph");
 const DTG_IMAGE_NAME = "dtg";
 
 function runDTG(template) {
@@ -13,6 +14,32 @@ function runDTG(template) {
   console.info(`Done with DTG: '${String(output)}'`);
 }
 
+function makeTypesUnique(src) {
+  const project = new Project();
+
+  project.addExistingSourceFiles(src + "/*.ts");
+  const knownIdentifiers = [];
+
+  const removeIfDuplicate = interface => {
+    const name = interface.getName();
+    if (knownIdentifiers.includes(name)) {
+      console.info("Deleting duplicate:", name);
+      interface.remove();
+    } else {
+      knownIdentifiers.push(name);
+    }
+  };
+
+  project.getSourceFiles().forEach(source => {
+    source.getInterfaces().forEach(removeIfDuplicate);
+    source.getEnums().forEach(removeIfDuplicate);
+  });
+
+  project.saveSync();
+}
+
 rimraf.sync("./outputs/{typescript,graphql}/*");
 runDTG("graphql");
 runDTG("typescript");
+
+makeTypesUnique("./outputs/typescript");
